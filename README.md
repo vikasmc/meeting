@@ -1,2 +1,2 @@
 # meeting
-Meeting
+Meeting Application

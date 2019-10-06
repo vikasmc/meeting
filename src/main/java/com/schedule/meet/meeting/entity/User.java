@@ -4,10 +4,12 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "user_detail", schema = "public")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
+    @SequenceGenerator(name = "user_generator", sequenceName = "usersequence", allocationSize = 1)
     @Column(name = "user_id")
     private Integer userId;
     @Column(name = "username")

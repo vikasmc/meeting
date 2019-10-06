@@ -46,6 +46,7 @@ scheduler_id INTEGER NOT NULL,
 user_Id INTEGER NOT NULL,
 FOREIGN KEY(scheduler_id) REFERENCES scheduler(scheduler_id),
 FOREIGN KEY(user_id) REFERENCES user_detail(user_id)
+<<<<<<< HEAD
 );
 
 
@@ -58,3 +59,6 @@ CACHE 1;
 
 ALTER SEQUENCE public.usersequence
 OWNER TO postgres;
+=======
+);
+>>>>>>> 5fc5d58848ead9b7feb450d61fbda274c20677e2

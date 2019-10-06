@@ -46,7 +46,6 @@ scheduler_id INTEGER NOT NULL,
 user_Id INTEGER NOT NULL,
 FOREIGN KEY(scheduler_id) REFERENCES scheduler(scheduler_id),
 FOREIGN KEY(user_id) REFERENCES user_detail(user_id)
-<<<<<<< HEAD
 );
 
 
@@ -59,6 +58,49 @@ CACHE 1;
 
 ALTER SEQUENCE public.usersequence
 OWNER TO postgres;
-=======
-);
->>>>>>> 5fc5d58848ead9b7feb450d61fbda274c20677e2
+
+
+CREATE SEQUENCE public.rolesequence
+INCREMENT 1
+START 1
+MINVALUE 1
+MAXVALUE 9223372036854775807
+CACHE 1;
+
+ALTER SEQUENCE public.rolesequence
+OWNER TO postgres;
+
+
+
+CREATE SEQUENCE public.roomsequence
+INCREMENT 1
+START 1
+MINVALUE 1
+MAXVALUE 9223372036854775807
+CACHE 1;
+
+ALTER SEQUENCE public.roomsequence
+OWNER TO postgres;
+
+
+CREATE SEQUENCE public.userrolesequence
+INCREMENT 1
+START 1
+MINVALUE 1
+MAXVALUE 9223372036854775807
+CACHE 1;
+
+ALTER SEQUENCE public.userrolesequence
+OWNER TO postgres;
+
+
+
+CREATE SEQUENCE public.schedulersequence
+INCREMENT 1
+START 1
+MINVALUE 1
+MAXVALUE 9223372036854775807
+CACHE 1;
+
+ALTER SEQUENCE public.schedulersequence
+OWNER TO postgres;

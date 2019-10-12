@@ -2,8 +2,8 @@ package com.schedule.meet.meeting.entity;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "role_list", schema = "public")
+//@Entity
+//@Table(name = "role_list", schema = "public")
 public class Role_list {
 
     @Id

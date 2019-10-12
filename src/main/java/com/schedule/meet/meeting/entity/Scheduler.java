@@ -10,7 +10,7 @@ public class Scheduler {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "scheduler_generator")
     @SequenceGenerator(name = "scheduler_generator", sequenceName = "schedulersequence", allocationSize = 1)
-    @Column(name="user_role_id", nullable=false)
+    @Column(name="scheduler_id", nullable=false)
     private Integer schedulerId;
     @Column(name="room_id", nullable=false)
     private Integer roomId;

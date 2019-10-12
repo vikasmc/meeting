@@ -3,8 +3,8 @@ package com.schedule.meet.meeting.entity;
 import javax.management.relation.RoleList;
 import javax.persistence.*;
 
-@Entity
-@Table(name = "user_roles", schema = "public")
+//@Entity
+//@Table(name = "user_roles", schema = "public")
 public class User_roles {
 
     @Id

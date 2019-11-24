@@ -42,6 +42,7 @@ FOREIGN KEY(user_id) REFERENCES user_detail(user_id)
 );
 
 create table enrollment(
+enrollment_id serial PRIMARY KEY,
 scheduler_id INTEGER NOT NULL,
 user_Id INTEGER NOT NULL,
 FOREIGN KEY(scheduler_id) REFERENCES scheduler(scheduler_id),

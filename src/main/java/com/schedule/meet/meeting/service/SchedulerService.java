@@ -27,6 +27,11 @@ public class SchedulerService {
 
     @Transactional
     public boolean addSchedule(Scheduler scheduler) {
+        List<Scheduler> conflictSchedule = userRepository.findByTime(scheduler.getStartTime(), scheduler.getEndTime(),scheduler.getRoomId());
+        if(conflictSchedule.size()>0){
+            System.out.println("Schedule Conflicts");
+            throw new RuntimeException("Schedule Conflicts");
+        }
         return userRepository.save(scheduler) != null;
     }
 

@@ -1,10 +1,9 @@
 package com.schedule.meet.meeting.entity;
 
-import javax.management.relation.RoleList;
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "user_roles", schema = "public")
+@Entity
+@Table(name = "user_roles", schema = "public")
 public class User_roles {
 
     @Id
@@ -13,9 +12,9 @@ public class User_roles {
     @Column(name="user_role_id", nullable=false)
     private Integer userRoleId;
     @Column(name="role_id", nullable=false)
-    private RoleList roleList;
-    @Column(name="user_id", nullable=false)
-    private User user;
+    private Long role_id;
+    @Column(name="userId", nullable=false)
+    private Integer userId;
 
 
     public Integer getUserRoleId() {
@@ -26,19 +25,19 @@ public class User_roles {
         this.userRoleId = userRoleId;
     }
 
-    public RoleList getRoleList() {
-        return roleList;
+    public Long getRole_id() {
+        return role_id;
     }
 
-    public void setRoleList(RoleList roleList) {
-        this.roleList = roleList;
+    public void setRole_id(Long role_id) {
+        this.role_id = role_id;
     }
 
-    public User getUser() {
-        return user;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Integer user) {
+        this.userId = user;
     }
 }

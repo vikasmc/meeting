@@ -24,6 +24,10 @@ public class User {
     @Column(name = "last_login")
     //    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime lastLoginTime;
+    @Transient
+    private String type;
+    @Transient
+    private String token;
 
 
     public Integer getUserId() {
@@ -72,5 +76,21 @@ public class User {
 
     public void setLastLoginTime(LocalDateTime lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

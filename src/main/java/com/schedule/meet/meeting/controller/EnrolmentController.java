@@ -51,17 +51,17 @@ public class EnrolmentController {
         List<SearchResponse> searchResponsesList = new ArrayList<>();
         User byUserName = userRepository.findByUserName(user.getUserName()).get(0);
         List<Enrollment> allPersons = enrolmentService.getListBasedOnUserId(byUserName.getUserId());
+        List<Long> collect = allPersons.stream().map(e -> e.getSchedulerId()).collect(Collectors.toList());
         List<Scheduler> byTime = schedulerService.findByTime(LocalDate.now().atTime(0, 0, 0), LocalDate.now().atTime(23, 59, 59));
+        byTime = byTime.stream().filter(e->collect.contains(e.getSchedulerId())).collect(Collectors.toList());
         List<Long> collect1 = byTime.stream().map((e -> e.getSchedulerId())).collect(Collectors.toList());
-        List<Scheduler> byUserId = schedulerService.findByUserId(byUserName.getUserId());
+        List<Scheduler> byUserId = schedulerService.findByTimeuserId(LocalDate.now().atTime(0, 0, 0), LocalDate.now().atTime(23, 59, 59),byUserName.getUserId());
         for (Scheduler scheduler : byUserId) {
             if(collect1.contains(scheduler.getSchedulerId())){
                 continue;
             }
             byTime.add(scheduler);
         }
-        List<Long> collect = allPersons.stream().map(e -> e.getSchedulerId()).collect(Collectors.toList());
-        byTime = byTime.stream().filter(e->collect.contains(e.getSchedulerId())).collect(Collectors.toList());
         List<Room_list> allRooms = roomService.getAllRooms();
         for (Scheduler schedule : byTime) {
             SearchResponse searchResponse = new SearchResponse();

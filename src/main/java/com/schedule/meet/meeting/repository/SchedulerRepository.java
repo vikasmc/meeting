@@ -21,6 +21,10 @@ public interface SchedulerRepository<P> extends CrudRepository<Scheduler, Long> 
     List<Scheduler> findByUserId(Long userId);
 
 
+    @Query(value = "Select * from scheduler where start_time<:endTime and end_time>:startTime and user_Id=:userId", nativeQuery = true)
+    List<Scheduler> findByTimeuserId(@Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime,  @Param("userId") Long userId);
+
+
 
 
 

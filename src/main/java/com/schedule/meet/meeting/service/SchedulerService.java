@@ -27,6 +27,11 @@ public class SchedulerService {
         return  scheduleRepository.findByTime(startTime, endTime);
     }
 
+    @Transactional
+    public List<Scheduler> findByTimeuserId(LocalDateTime startTime,LocalDateTime endTime, Long userId) {
+        return  scheduleRepository.findByTimeuserId(startTime, endTime,userId);
+    }
+
 
     @Transactional
     public List<Scheduler> findByUserId(Long userId){

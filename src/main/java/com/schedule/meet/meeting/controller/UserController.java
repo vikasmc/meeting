@@ -67,6 +67,10 @@ public class UserController {
         newUser.setUserName(user.getUserName());
         newUser.setPassword(user.getPassword());
         newUser.setEmail(user.getEmail());
+        User exist = userService.findByName(newUser.getUserName());
+        if(exist!=null){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
         try{
             userService.addPerson(newUser);
             User userList = userService.findByName(newUser.getUserName());

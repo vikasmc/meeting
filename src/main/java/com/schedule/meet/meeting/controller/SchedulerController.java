@@ -35,6 +35,9 @@ public class SchedulerController {
     @RequestMapping(value = "/schedule/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> crateUser(@RequestBody Scheduler scheduler) {
         try {
+            if(scheduler.getStartTime().isAfter(scheduler.getEndTime())){
+                return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            }
             Room_list room_list = roomService.geRoomsByName(scheduler.getRoomName());
             scheduler.setRoomId(room_list.getRoomId());
             schedulerService.addSchedule(scheduler);

@@ -32,7 +32,10 @@ public class RoomController {
 
     @RequestMapping(value = "/rooms/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> crateUser(@RequestBody Room_list room_list) {
-
+        Room_list room_list1 = roomService.geRoomsByName(room_list.getRoomName());
+        if(room_list1!=null){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
         try{
             roomService.addRoom(room_list);
         }catch (Exception e){

@@ -52,6 +52,14 @@ public class EnrolmentController {
         User byUserName = userRepository.findByUserName(user.getUserName()).get(0);
         List<Enrollment> allPersons = enrolmentService.getListBasedOnUserId(byUserName.getUserId());
         List<Scheduler> byTime = schedulerService.findByTime(LocalDate.now().atTime(0, 0, 0), LocalDate.now().atTime(23, 59, 59));
+        List<Long> collect1 = byTime.stream().map((e -> e.getSchedulerId())).collect(Collectors.toList());
+        List<Scheduler> byUserId = schedulerService.findByUserId(byUserName.getUserId());
+        for (Scheduler scheduler : byUserId) {
+            if(collect1.contains(scheduler.getSchedulerId())){
+                continue;
+            }
+            byTime.add(scheduler);
+        }
         List<Long> collect = allPersons.stream().map(e -> e.getSchedulerId()).collect(Collectors.toList());
         byTime = byTime.stream().filter(e->collect.contains(e.getSchedulerId())).collect(Collectors.toList());
         List<Room_list> allRooms = roomService.getAllRooms();

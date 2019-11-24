@@ -21,7 +21,7 @@ public class UserRoleService {
     }
 
     @Transactional
-    public User_roles getUserRoleByUser(Integer userId){
+    public User_roles getUserRoleByUser(Long userId){
         List<User_roles> roleByUserId = user_rolesUserRoleRepository.findRoleByUserId(userId);
         if(roleByUserId.size()==0){
             return null;

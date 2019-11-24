@@ -11,11 +11,11 @@ public class Scheduler {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "scheduler_generator")
     @SequenceGenerator(name = "scheduler_generator", sequenceName = "schedulersequence", allocationSize = 1)
     @Column(name="scheduler_id", nullable=false)
-    private Integer schedulerId;
+    private Long schedulerId;
     @Column(name="room_id", nullable=false)
     private Integer roomId;
     @Column(name="user_Id", nullable=false)
-    private Integer userId;
+    private Long userId;
     @Column(name="start_time")
     private LocalDateTime startTime;
     @Column(name="end_time")
@@ -24,13 +24,15 @@ public class Scheduler {
     private String topicName;
     @Column(name="topic_description", nullable=false)
     private String topicDescription;
+    @Transient
+    private String roomName;
 
 
-    public Integer getSchedulerId() {
+    public Long getSchedulerId() {
         return schedulerId;
     }
 
-    public void setSchedulerId(Integer schedulerId) {
+    public void setSchedulerId(Long schedulerId) {
         this.schedulerId = schedulerId;
     }
 
@@ -42,11 +44,11 @@ public class Scheduler {
         this.roomId = roomId;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -80,5 +82,13 @@ public class Scheduler {
 
     public void setTopicDescription(String topicDescription) {
         this.topicDescription = topicDescription;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 }

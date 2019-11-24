@@ -20,8 +20,13 @@ public class UserService {
     }
 
     @Transactional
-    public List<User> findByName(String name) {
-        return userRepository.findByUserName(name);
+    public User findByName(String name) {
+        List<User> byUserName = userRepository.findByUserName(name);
+        if(byUserName.size()==0){
+            return null;
+        }
+        return byUserName.get(0);
+
     }
 
     @Transactional

@@ -2,6 +2,7 @@ package com.schedule.meet.meeting.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "user_detail", schema = "public")
@@ -11,7 +12,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
     @SequenceGenerator(name = "user_generator", sequenceName = "usersequence", allocationSize = 1)
     @Column(name = "user_id")
-    private Integer userId;
+    private Long userId;
     @Column(name = "username")
     private String userName;
     @Column(name = "password")
@@ -29,12 +30,22 @@ public class User {
     @Transient
     private String token;
 
+    @Transient
+    private List<Long> scheduleList;
 
-    public Integer getUserId() {
+    public List<Long> getScheduleList() {
+        return scheduleList;
+    }
+
+    public void setScheduleList(List<Long> scheduleList) {
+        this.scheduleList = scheduleList;
+    }
+
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

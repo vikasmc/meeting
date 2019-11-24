@@ -21,6 +21,16 @@ public class RoomService {
 
 
     @Transactional
+    public Room_list geRoomsByName(String name) {
+        List<Room_list> byRoomName = RoomRepository.findByRoomName(name);
+        if(byRoomName.size()==0){
+            return null;
+        }
+        return byRoomName.get(0);
+    }
+
+
+    @Transactional
     public Room_list getById(Long RoomId) {
         return RoomRepository.findById(RoomId).get();
     }

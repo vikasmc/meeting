@@ -4,9 +4,7 @@ import com.schedule.meet.meeting.entity.Role_list;
 import com.schedule.meet.meeting.entity.User;
 import com.schedule.meet.meeting.entity.User_roles;
 //import com.schedule.meet.meeting.security.JwtTokenUtil;
-import com.schedule.meet.meeting.service.RoleService;
-import com.schedule.meet.meeting.service.UserRoleService;
-import com.schedule.meet.meeting.service.UserService;
+import com.schedule.meet.meeting.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class UserController {
@@ -27,6 +26,12 @@ public class UserController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private SchedulerService schedulerService;
+
+    @Autowired
+    private EnrolmentService enrolmentService;
 
 //    @Autowired
 //    private JwtTokenUtil jwtTokenUtil;
@@ -45,6 +50,8 @@ public class UserController {
              Role_list byId = roleService.getById(userRoleByUser.getRole_id());
              curUser.setType(byId.getRoleName());
 //             curUser.setToken(token);
+             List<Long> collect = enrolmentService.getListBasedOnUserId(curUser.getUserId()).stream().map(e -> e.getSchedulerId()).distinct().collect(Collectors.toList());
+             curUser.setScheduleList(collect);
              return ResponseEntity.ok(curUser);
          }else{
              return ResponseEntity.notFound().build();
@@ -62,7 +69,7 @@ public class UserController {
         newUser.setEmail(user.getEmail());
         try{
             userService.addPerson(newUser);
-            User userList = userService.findByName(newUser.getUserName()).get(0);
+            User userList = userService.findByName(newUser.getUserName());
             Role_list byId = roleService.getById(2l);
             User_roles user_roles = new User_roles();
             user_roles.setUserId(userList.getUserId());

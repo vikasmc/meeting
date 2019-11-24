@@ -10,6 +10,6 @@ public interface UserRoleRepository<P> extends CrudRepository<User_roles, Long> 
 
 
 
-    List<User_roles> findRoleByUserId(Integer userId);
+    List<User_roles> findRoleByUserId(Long userId);
 
 }

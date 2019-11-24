@@ -2,33 +2,33 @@ package com.schedule.meet.meeting.entity;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "enrollment", schema = "public")
+@Entity
+@Table(name = "enrollment", schema = "public")
 public class Enrollment {
 
     @Column(name = "scheduler_id", nullable = false)
-    private Integer schedulerId;
+    private Long schedulerId;
     @Column(name = "user_Id", nullable = false)
-    private Integer userId;
+    private Long userId;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "enrollment_generator")
     @SequenceGenerator(name = "enrollment_generator", sequenceName = "enrollmentsequence", allocationSize = 1)
     @Column(name = "enrollment_id", nullable = false)
     private Integer enrollmentId;
 
-    public Integer getSchedulerId() {
+    public Long getSchedulerId() {
         return schedulerId;
     }
 
-    public void setSchedulerId(Integer schedulerId) {
+    public void setSchedulerId(Long schedulerId) {
         this.schedulerId = schedulerId;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

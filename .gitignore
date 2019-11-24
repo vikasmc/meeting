@@ -1,6 +1,10 @@
 HELP.md
 .gradle
-build/
+build/classes
+build/generated
+build/resources
+build/tmp
+!build/libs/meeting-0.0.1-SNAPSHOT.war
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**

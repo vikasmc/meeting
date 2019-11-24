@@ -40,4 +40,9 @@ public class EnrolmentService {
         return enrolmentRepository.findByuserId(userId);
     }
 
+    @Transactional
+    public List<Enrollment> getListBasedOnScheduleId(Long scheduleId){
+        return enrolmentRepository.findByschedulerId(scheduleId);
+    }
+
 }

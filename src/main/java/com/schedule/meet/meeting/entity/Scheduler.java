@@ -13,7 +13,7 @@ public class Scheduler {
     @Column(name="scheduler_id", nullable=false)
     private Long schedulerId;
     @Column(name="room_id", nullable=false)
-    private Integer roomId;
+    private Long roomId;
     @Column(name="user_Id", nullable=false)
     private Long userId;
     @Column(name="start_time")
@@ -36,11 +36,11 @@ public class Scheduler {
         this.schedulerId = schedulerId;
     }
 
-    public Integer getRoomId() {
+    public Long getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(Integer roomId) {
+    public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }
 

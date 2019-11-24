@@ -12,4 +12,6 @@ public interface EnrollmentRepository<P> extends CrudRepository<Enrollment, Long
 
     List<Enrollment> findByuserId(Long user_Id);
 
+    List<Enrollment> findByschedulerId(Long scheduler_id);
+
 }

@@ -11,7 +11,7 @@ public class Room_list {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_generator")
     @SequenceGenerator(name = "room_generator", sequenceName = "roomsequence", allocationSize = 1)
     @Column(name = "room_id")
-    private Integer roomId;
+    private Long roomId;
     @Column(name = "room_name")
     private String roomName;
     @Column(name = "room_location")
@@ -20,11 +20,11 @@ public class Room_list {
     private Integer roomSize;
 
 
-    public Integer getRoomId() {
+    public Long getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(Integer roomId) {
+    public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }
 

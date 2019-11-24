@@ -79,6 +79,12 @@ public class EnrolmentController {
     @RequestMapping(value = "/enrolment/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> crateUser(@RequestBody Enrollment room_list) {
         User user = userRepository.findById(room_list.getUserId()).get();
+        int size = enrolmentService.getListBasedOnScheduleId(room_list.getSchedulerId()).size();
+        Scheduler byId = schedulerService.getById(room_list.getSchedulerId());
+        Room_list byId1 = roomService.getById(byId.getRoomId());
+        if(byId1.getRoomSize()<=size){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
         List<Long> collect = enrolmentService.getListBasedOnUserId(user.getUserId()).stream().map(e -> e.getSchedulerId()).distinct().collect(Collectors.toList());
         user.setScheduleList(collect);
         try{
